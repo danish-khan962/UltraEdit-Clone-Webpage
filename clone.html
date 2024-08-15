@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture 35 | Clone Website</title>
+
+    <style>
+        :root {
+            --background: white;
+            --navText-color: rgb(105, 104, 104);
+            --card-color: rgb(247, 245, 245);
+        }
+
+        * {
+            margin: 0;
+            background-color: var(--background);
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            gap: 275px;
+            align-items: center;
+            justify-items: center;
+            background-color: black;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            margin: 8px 0;
+        }
+
+        .logo {
+            margin: 15px 55px;
+        }
+
+        ul li {
+            list-style-type: none;
+            display: inline-block;
+
+        }
+
+        .navButtons ul li summary {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 15px;
+            color: var(--navText-color);
+            list-style-type: none;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        summary img {
+            height: 25px;
+        }
+
+        /*Main Content*/
+        .mainContent {
+            margin-top: 60px;
+            ;
+            text-align: center;
+            font-size: 300%;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 100;
+        }
+
+        .mainContent button {
+            border: 0px solid white;
+        }
+
+        .mainContent2 {
+            margin: 40px 200px;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            justify-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 150%;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            justify-items: center;
+            align-content: center;
+            align-items: center;
+        }
+
+        #b1 {
+            background-color: rgb(2, 62, 242);
+            padding: 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bolder;
+            color: white;
+            border-radius: 12px;
+        }
+
+        #b1:hover {
+            background-color: black;
+            color: aqua;
+        }
+
+        #id1 {
+            margin-top: 70px;
+            left: 0;
+            margin-left: 180px;
+            display: flex;
+            align-items: center;
+            font-size: 25px;
+            gap: 15px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #id1 p {
+            display: inline-block;
+            font-weight: lighter;
+            font-size: 13px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serifS
+        }
+
+
+        /*Cards*/
+        .cards1 {
+            margin-top: 45px;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            justify-items: center;
+            align-content: center;
+            column-gap: 30px;
+            row-gap: 30px;
+        }
+
+        .cards2 {
+            margin-top: 30px;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .cards3 {
+            margin-top: 30px;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: var(--card-color);
+            border: 1px solid var(--card-color);
+            height: 200px;
+            width: 300px;
+            border-radius: 6px;
+            display: flex;
+            text-align: center;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            row-gap: 30px;
+        }
+
+        .card button {
+            margin: 5px 9px;
+            padding: 10px;
+            border-radius: 15px;
+            font-weight: bold;
+            color: white;
+            background-color: rgb(14, 148, 25);
+            border: 0px;
+        }
+
+        .card button:hover {
+            background-color: aliceblue;
+            color: violet;
+        }
+
+        .card p {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: var(--card-color);
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        /*Footer Section*/
+        .footBox {
+            width: 98.72vw;
+            margin-top: 70px;
+            background-color: rgb(44, 43, 43);
+            min-height: 30vh;
+            display: flex;
+            justify-content: center;
+        }
+
+        #fb1 {
+            border-radius: 10px;
+            margin-top: 40px;
+            padding: 22px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bolder;
+            font-size: 20px;
+            width: 550px;
+            background-color: orange;
+        }
+
+        .footForm {
+            background-color: rgb(44, 43, 43);
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #n1,
+        #n2,
+        form {
+            padding-top: 22px;
+            background-color: rgb(44, 43, 43);
+            color: white;
+        }
+
+        form,
+        #fb3 {
+            margin-top: 28px;
+        }
+
+        #n1 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 28px;
+            text-decoration: underline;
+        }
+
+        #n2 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 20px;
+            color: rgb(213, 211, 211);
+        }
+
+        form input {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            width: 333px;
+            height: 40px;
+            font-size: 15px;
+            background-color: beige;
+            border: 4px solid green;
+            border-radius: 12px;
+        }
+
+        input::placeholder {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        input:hover {
+            background-color: rgb(255, 255, 255);
+        }
+
+        #fb3 {
+            border-radius: 0px;
+            background-color: red;
+            text-align: center;
+            color: whitesmoke;
+            width: 333px;
+            height: 45px;
+            border-radius: 8px;
+            font-size: large;
+            font-weight: bolder;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        #fb3:hover {
+            background-color: white;
+            color: blue;
+        }
+
+        #fb3:active {
+            background-color: rgb(52, 51, 51);
+            color: orange;
+        }
+
+        .foot3 {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            gap: 275px;
+            align-items: center;
+            justify-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            margin-top: 80px;
+            ;
+        }
+
+        .logo {
+            margin: 15px 55px;
+        }
+
+        .foot3 {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            gap: 592px;
+            align-items: baseline;
+            justify-items: center;
+            top: 0;
+        }
+
+        .links {
+            margin: 8px 0;
+        }
+
+        ul li {
+            list-style-type: none;
+            display: inline-block;
+
+        }
+
+        .links ul li a img {
+            list-style-type: none;
+            padding: 6px;
+            margin-bottom: 15px;
+            height: 25px;
+            width: 25px;
+            align-items: baseline;
+            vertical-align: middle;
+        }
+
+        .copyright p {
+            margin-left: 80px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="Brand Logo.png" alt="">
+        </div>
+        <nav class="navButtons">
+            <ul>
+                <li>
+                    <details>
+                        <summary>Products</summary>
+                    </details>
+                </li>
+                <li>
+                    <details>
+                        <summary>Pricing</summary>
+                    </details>
+                </li>
+                <li>
+                    <details>
+                        <summary>Resources</summary>
+                    </details>
+                </li>
+                <li>
+                    <details>
+                        <summary>About Us</summary>
+                    </details>
+                </li>
+                <li>
+                    <details>
+                        <summary>Security and compilance
+                    </details>
+                </li>
+                <li>
+                    <details>
+                        <summary><img src="FAQ logo.png" alt="">
+                        </summary>
+                    </details>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="mainContent">
+            <p>Download UltraEdit for windows<button><img
+                        src="https://www.ultraedit.com/wp-content/uploads/2022/10/Reviews.png" alt=""></button></p>
+        </div>
+
+        <div class="mainContent2">
+            <p>Download and try UltraEdit before you buy it! This download includes the full Windows version of the text
+                editor.</p>
+        </div>
+        <button id="b1">DOWNLOAD FOR MAC AND LINUX</button>
+    </main>
+
+    <div id="id1">
+        <img src="Brand UE.png" alt="">
+        <h4>Download UltraEdit <p>v2024.0 (released 2024-04-19) | Hotfix</p>
+        </h4>
+    </div>
+
+
+    <div class="cards1">
+        <div class="card">
+            <p>English</p>
+            <button>Download 64-Bit</button>
+        </div>
+        <div class="card">
+            <p>Deutsch</p>
+            <button>Download 64-Bit</button>
+        </div>
+        <div class="card">
+            <p>Italiano</p>
+            <button>Download 64-bit</button>
+        </div>
+    </div>
+    <div class="cards2">
+        <div class="card">
+            <p>Español</p>
+            <button>Download 64-bit</button>
+        </div>
+        <div class="card">
+            <p>français</p>
+            <button>Download 64-bit</button>
+        </div>
+        <div class="card">
+            <p>Português brasileiro</p>
+            <button>Download 64-bit</button>
+        </div>
+    </div>
+    <div class="cards3">
+        <div class="card">
+            <p>日本 Japanese</p>
+            <button>Download 64-bit</button>
+        </div>
+        <div class="card">
+            <p>한국어 Korean</p>
+            <button>Download 64-bit</button>
+        </div>
+        <div class="card">
+            <p>中国 Chinese</p>
+            <button>Download 64-bit</button>
+        </div>
+    </div>
+
+    <footer class="foot">
+        <div class="footBox">
+            <button id="fb1">
+                Try UltraEdit
+            </button>
+        </div>
+    </footer>
+
+    <footer class="foot2">
+        <div class="footForm">
+            <p id="n1">Subscribe to Newsletter</p>
+            <p id="n2">Subscribe for latest news, releases, and development</p>
+            <form>
+                <input type="text" placeholder="Enter email address..">
+            </form>
+            <button id="fb3">SUBSCRIBE</button>
+        </div>
+    </footer>
+
+
+    <footer class="foot3">
+        <div class="logo">
+            <img src="Brand Logo.png" alt="">
+        </div>
+        <div class="links">
+            <ul>
+                <li><a href="https://x.com/ultraedit?lang=en" target="_blank"><img src="X-logo.png" alt="X link"
+                            style="height: 30px; width: 32px;"></a></li>
+                <li><a href="https://github.com/IDMComputerSolutions" target="_blank"><img src="GitHub-logo.png"
+                            alt="GitHub link" style="height: 40px; width: 40px;"></a></li>
+                <li><a href="https://www.youtube.com/channel/UCVdjJ5uRBgchJFRS7G6LjrQ" target="_blank"><img
+                            src="youtube.png" alt="YouTube link"></a></li>
+                <li><a href="https://www.facebook.com/UltraEdit" target="_blank"><img src="FaceBook-logo.png"
+                            alt="FaceBook link"></a></li>
+                <li><a href="https://www.instagram.com/ultraedit_idm/" target="_blank"><img src="instagram.png"
+                            alt="Instagram"></a></li>
+                <li><a href="https://www.linkedin.com/company/idm-computer-solutions/" target="_blank"><img
+                            src="linkedin-logo.png" alt="LinkedIn"></a></li>
+                <li><a href="https://www.reddit.com/r/UltraEdit/" target="_blank"><img src="reddit.png"
+                            alt="Reddit"></a></li>
+            </ul>
+        </div>
+
+    </footer>
+    <div class="copyright">
+        <p>&copy 2024 UltraEdit | All Rights Reserved.</p>
+    </div>
+
+</body>
+
+</html>
